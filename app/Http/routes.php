@@ -23,16 +23,22 @@ route::get('/admin', function () {
     return view('admin.index');
 });
 
+Route::get('/post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
+
 route::group(['middleware' => 'admin'], function () {
 
     route::resource('/admin/users', 'AdminUsersController');
     route::resource('/admin/posts', 'AdminPostsController');
     route::resource('/admin/categories', 'AdminCategoriesController');
     route::resource('/admin/media', 'AdminMediaController');
-
-
+    route::resource('/admin/comments', 'PostCommentsController');
+    route::resource('/admin/comment/replies', 'CommentRepliesController');
 
 
 });
 
+route::group(['middleware' => 'admin'], function () {
 
+    route::post('/comment/replies', 'CommentRepliesController@createReply');
+
+});

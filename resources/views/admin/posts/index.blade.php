@@ -35,11 +35,19 @@
                         <td>{{$post->category ? $post->category->name : "Uncategorized"}}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td>{{$post->updated_at->diffForHumans()}}</td>
+                        <td><a href="{{route('home.post',$post->id)}}">view post</a></td>
+                        <td><a href="{{route('admin.comments.show',$post->id)}}">view comments</a></td>
                     </tr>
                 @endforeach
             @endif
             </tbody>
         </table>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{$posts->render()}}
+        </div>
     </div>
 
 @endsection
