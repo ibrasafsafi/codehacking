@@ -35,8 +35,8 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $users = User::lists('name', 'id')->all();
-        $cats = Category::lists('name', 'id')->all();
+        $users = User::pluck('name', 'id')->all();
+        $cats = Category::pluck('name', 'id')->all();
 
         return view('admin.posts.create', compact('users', 'cats'));
     }
@@ -81,8 +81,8 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        $users = User::lists('name', 'id')->all();
-        $cats = Category::lists('name', 'id')->all();
+        $users = User::pluck('name', 'id')->all();
+        $cats = Category::pluck('name', 'id')->all();
 
         $post = Post::findOrFail($id);
         return view('admin.posts.edit', compact('post','users','cats'));
