@@ -11,13 +11,17 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 
-
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'HomeController@index');
 
 Route::auth();
+
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index');
 
@@ -25,9 +29,7 @@ Route::get('/post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']
 
 route::group(['middleware' => 'admin'], function () {
 
-    route::get('/admin', function () {
-        return view('admin.index');
-    });
+    route::get('/admin', 'AdminController@index');
 
 
     route::resource('/admin/users', 'AdminUsersController',['names'=>[
@@ -72,6 +74,8 @@ route::group(['middleware' => 'admin'], function () {
 
 
 });
+
+route::delete('/delete/media','AdminMediaController@deleteMedia');
 
 
 route::group(['middleware' => 'admin'], function () {

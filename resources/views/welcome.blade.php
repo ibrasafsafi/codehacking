@@ -15,3 +15,8 @@
     </div>
 </div>
 @endsection
+
+
+
+    <script src="{{asset('js/libs.js')}}"></script>
+

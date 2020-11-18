@@ -46,7 +46,7 @@ class AdminUsersController extends Controller
     public function store(UsersRequest $request)
     {
         if (trim($request->password) == '') {
-            $input = $request->except('passwo rd');
+            $input = $request->except('password');
         } else {
             $input = $request->all();
             $input['password'] = bcrypt($request->password);

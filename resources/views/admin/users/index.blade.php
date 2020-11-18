@@ -31,10 +31,10 @@
                         <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a></td>
                         <td><img class="img-rounded" height="50" src="{{$user->photo ? $user->photo->file : "No Photo exists"}}" alt=""></td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->role->name}}</td>
+                        <td>{{$user->role ? $user->role->name : 'No Roles'}}</td>
                         <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
-                        <td>{{$user->created_at->diffForHumans()}}</td>
-                        <td>{{$user->updated_at->diffForHumans()}}</td>
+                        <td>{{$user->created_at ? $user->created_at->diffForHumans() : 'No date'}}</td>
+                        <td>{{$user->updated_at ? $user->updated_at->diffForHumans() : 'No date'}}</td>
                     </tr>
                 @endforeach
             @endif

@@ -30,7 +30,7 @@
                         <td>{{$post->id}}</td>
                         <td><img class="img-rounded" height="50" src="{{$post->photo ? $post->photo->file : "http://placehold.it/50x50"}}" alt=""></td>
                         <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->title}}</a></td>
-                        <td>{{$post->body}}</td>
+                        <td>{{str_limit($post->body,20)}}</td>
                         <td>{{$post->user ? $post->user->name : "This Post Has No User"}}</td>
                         <td>{{$post->category ? $post->category->name : "Uncategorized"}}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
